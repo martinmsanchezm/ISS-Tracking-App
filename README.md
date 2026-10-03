@@ -102,7 +102,7 @@ ISS-Tracking-App/
 ### Install and run
 
 ```bash
-git clone https://github.com/nensanc/ISS-Tracking-App.git
+git clone https://github.com/martinmsanchezm/ISS-Tracking-App.git
 cd ISS-Tracking-App
 npm install
 npm start            # expo start: scan the QR code with Expo Go
@@ -129,7 +129,7 @@ The NASA requests use the public `DEMO_KEY`, which has low rate limits. For regu
 
 ## Author
 
-**Martin Sanchez** ([@nensanc](https://github.com/nensanc))
+**Martin Sanchez** ([@martinmsanchezm](https://github.com/martinmsanchezm))
 
 ## License
 
