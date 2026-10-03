@@ -44,11 +44,11 @@ flowchart LR
   - If you pan or zoom the map, auto-follow pauses and a **re-center** button appears to return to the station.
 - **People in space:**
   - Cards with the name and photo of each person returned by Open Notify.
-  - The photos come from a local map of names to image URLs.
+  - The photos come from a local map of names to image URLs. A person who isn't in that map gets a generic avatar.
 - **Mars rover gallery:**
   - A list of Curiosity photos from Earth date **2015-06-03**.
   - Tapping **Information** stores the photo in Redux and opens a details screen with the sol, the date, the camera data and the rover data (landing and launch dates, status, max sol, total photos).
-- **Astronomy Picture of the Day:** the floating button toggles a modal with today's APOD.
+- **Astronomy Picture of the Day:** the floating button toggles a modal with today's APOD. The copyright line only appears when the image has one.
 - **Loading states:** every screen shows a spinner until its API responds.
 
 ## Tech Stack
@@ -69,6 +69,7 @@ ISS-Tracking-App/
 ├── App.js                       # Redux Provider + SafeAreaProvider
 ├── app.json                     # Expo configuration
 ├── package.json
+├── LICENSE                      # MIT
 ├── assets/                      # App icon, splash, favicon
 └── src/
     ├── store.js                 # Redux store (thunk middleware)
@@ -122,11 +123,14 @@ The NASA requests use the public `DEMO_KEY`, which has low rate limits. For regu
 
 - **Expo Go and SDK 50:** the project targets Expo SDK 50. Expo Go only supports recent SDKs, so with a newer Expo Go you may need to upgrade the SDK or use a development build.
 - **Web:** the `npm run web` script is defined, but the web dependencies (`react-dom`, `react-native-web`) aren't in `package.json`, and the map relies on `react-native-maps`.
-- **Astronaut photos:** `astrosPhoto.json` only covers the 7 people who were in orbit when the app was built. If Open Notify returns a name that isn't in that file, the list can't find a photo for it.
-- **APOD copyright:** the modal reads `data.copyright` directly. Some APOD entries are public domain and have no `copyright` field.
+- **Astronaut photos:** `astrosPhoto.json` only has photos for the 7 people who were in orbit when the app was built. Anyone else is shown with a generic avatar until you add them to that file.
+- **APOD videos:** some days the APOD is a video instead of an image. The modal always shows `data.url` as an image, so on those days no picture appears.
 - **Fixed Mars date:** the rover gallery always queries Curiosity photos from 2015-06-03.
-- **Unused dependencies:** `redux-logger` and `redux-promise-middleware` are listed in `package.json`, but the store only uses `redux-thunk`.
 
 ## Author
 
 **Martin Sanchez** ([@nensanc](https://github.com/nensanc))
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).

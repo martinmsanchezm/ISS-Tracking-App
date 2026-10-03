@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {View, FlatList} from 'react-native';
-import { Card, Text } from 'react-native-paper';
+import { Avatar, Card, Text } from 'react-native-paper';
 import { Divider } from 'react-native-paper';
 import AstrosPhoto from '../data/astrosPhoto.json';
 import LoadingIndicator from "./LoadingIndicator";
@@ -31,7 +31,11 @@ const AstrosList = () =>{
                 ItemSeparatorComponent={() => <Divider style={{padding:1, margin:5}} />}
                 renderItem={({item:data}) => (
                         <Card>
-                            <Card.Cover source={{ uri: AstrosPhoto.photos[data.name].url }} style={{height:500}} />
+                            {AstrosPhoto.photos[data.name]?
+                                <Card.Cover source={{ uri: AstrosPhoto.photos[data.name].url }} style={{height:500}} />
+                                :
+                                <Avatar.Icon size={160} icon="account" style={{alignSelf:'center', marginTop:20}} />
+                            }
                             <Card.Content>
                                 <Text style={{color:'green'}} variant="titleLarge">{data.name}</Text>
                             </Card.Content>

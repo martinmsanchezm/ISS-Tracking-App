@@ -34,7 +34,11 @@ const ApodModal = ({showApod, setApodModal}) => {
                       <Card.Content>
                           <Text style={{color:'black'}} variant="titleLarge">{data.title}</Text>
                           <Text style={{color:'green'}} variant="titleSmall">{data.date}</Text>
-                          <Text style={{color:'green'}} variant="titleSmall">{data.copyright.replace('\n', '')}</Text>
+                          {data.copyright?
+                            <Text style={{color:'green'}} variant="titleSmall">{data.copyright.replace('\n', '')}</Text>
+                            :
+                            null
+                          }
                           <Text style={{color:'green'}} variant="titleMedium">{data.explanation}</Text>
                       </Card.Content>
                   </Card>
